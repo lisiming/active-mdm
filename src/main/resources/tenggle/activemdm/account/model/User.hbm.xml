@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="tenggle.activemdm.account.model.User" table="users">
+        <id name="id">
+            <generator class="increment" />
+        </id>
+
+        <property name="username" length="20" not-null="true" />
+        <property name="password" length="50" not-null="true" />
+        <property name="create_time" not-null="true" />
+
+        <!-- Bidirectional one-to-many association to Device -->
+        <set name="devices" inverse="true" lazy="false">
+            <key column="user_id" />
+            <one-to-many class="tenggle.activemdm.device.model.Device" />
+        </set>
+    </class>
+</hibernate-mapping>

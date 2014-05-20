@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/activemdm?useUnicode=true&amp;characterEncoding=UTF-8" />
+        <property name="username" value="root" />
+        <property name="password" value="123456" />
+    </bean>
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.connection.pool_size">1</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</prop>
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+        <property name="mappingResources">
+            <list>
+                <value>tenggle/activemdm/account/model/User.hbm.xml</value>
+                <value>tenggle/activemdm/device/model/Device.hbm.xml</value>
+                <value>tenggle/activemdm/model/model/Model.hbm.xml</value>
+                <value>tenggle/activemdm/property/model/Property.hbm.xml</value>
+                <value>tenggle/activemdm/event/model/Event.hbm.xml</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- account -->
+    <bean id="userDao" class="tenggle.activemdm.account.dao.UserDao">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <bean id="userService" class="tenggle.activemdm.account.service.UserService">
+        <property name="userDao" ref="userDao" />
+    </bean>
+
+    <bean id="loginAction" class="tenggle.activemdm.account.action.LoginAction" scope="prototype">
+        <property name="userService" ref="userService" />
+    </bean>
+
+    <bean id="registerAction" class="tenggle.activemdm.account.action.RegisterAction" scope="prototype">
+        <property name="userService" ref="userService" />
+    </bean>
+
+    <!-- device -->
+    <bean id="deviceDao" class="tenggle.activemdm.device.dao.DeviceDao">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <bean id="deviceService" class="tenggle.activemdm.device.service.DeviceService">
+        <property name="deviceDao" ref="deviceDao" />
+    </bean>
+
+    <bean id="deviceAction" class="tenggle.activemdm.device.action.DeviceAction" scope="prototype">
+        <property name="deviceService" ref="deviceService" />
+    </bean>
+    
+    <!-- model -->
+    <bean id="modelDao" class="tenggle.activemdm.model.dao.ModelDao">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <bean id="modelService" class="tenggle.activemdm.model.service.ModelService">
+        <property name="modelDao" ref="modelDao" />
+    </bean>
+
+    <bean id="modelAction" class="tenggle.activemdm.model.action.ModelAction" scope="prototype">
+        <property name="modelService" ref="modelService" />
+    </bean>
+    
+    <!-- property -->
+    <bean id="propertyDao" class="tenggle.activemdm.property.dao.PropertyDao">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <bean id="propertyService" class="tenggle.activemdm.property.service.PropertyService">
+        <property name="propertyDao" ref="propertyDao" />
+    </bean>
+
+    <bean id="propertyAction" class="tenggle.activemdm.property.action.PropertyAction" scope="prototype">
+        <property name="propertyService" ref="propertyService" />
+    </bean>
+    
+    <!-- event -->
+    <bean id="eventDao" class="tenggle.activemdm.event.dao.EventDao">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <bean id="eventService" class="tenggle.activemdm.event.service.EventService">
+        <property name="eventDao" ref="eventDao" />
+    </bean>
+
+    <bean id="eventAction" class="tenggle.activemdm.event.action.EventAction" scope="prototype">
+        <property name="eventService" ref="eventService" />
+    </bean>
+</beans>
