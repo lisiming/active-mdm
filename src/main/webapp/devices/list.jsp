@@ -16,8 +16,10 @@
     <tr>
         <th>Equipment id</th>
         <th>MAC address</th>
-        <th>Make model id</th>
+        <th>Make name</th>
+        <th>Model name</th>
         <th>Dialing number</th>
+        <th>User name</th>
         <th>Create time</th>
         <th>Action</th>
     </tr>
@@ -26,8 +28,10 @@
     <tr>
         <td><s:property value="equipment_id" /></td>
         <td><s:property value="mac_addr" /></td>
-        <td><s:property value="devicemodel_id" /></td>
+        <td><s:property value="make_name" /></td>
+        <td><s:property value="model_name" /></td>
         <td><s:property value="dialing_number" /></td>
+        <td><s:property value="username" /></td>
         <td><s:property value="create_time" /></td>
         <td>
             <s:a href="showDevice.action?deviceId=%{id}">Show</s:a>

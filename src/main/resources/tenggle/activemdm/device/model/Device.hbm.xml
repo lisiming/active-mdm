@@ -12,7 +12,10 @@
         <property name="equipment_id" not-null="true" />
         <property name="mac_addr" />
         <property name="devicemodel_id" not-null="true" />
+        <property name="make_name" not-null="true" />
+        <property name="model_name" not-null="true" />
         <property name="dialing_number" />
+        <property name="username" not-null="true" />
         <property name="create_time" not-null="true" />
 
         <many-to-one name="user" column="user_id" not-null="true" />

@@ -27,11 +27,21 @@
     <div class="field">
         <s:textfield name="device.mac_addr" label="MAC address" />
     </div>
+    
+    <div class="field">
+        <s:textfield name="device.devicemodel_id" label="Model id" />
+    </div>
+     <div class="field">
+        <s:textfield name="device.make_name" label="Make name" />
+    </div>
+     <div class="field">
+        <s:textfield name="device.model_name" label="Model name" />
+    </div>
     <div class="field">
         <s:textfield name="device.user_id" label="User id" />
     </div>
     <div class="field">
-        <s:textfield name="device.devicemodel_id" label="Model id" />
+        <s:textfield name="device.username" label="User name" />
     </div>
     <div class="field">
         <s:textfield name="device.dialing_number" label="Dialing number" />

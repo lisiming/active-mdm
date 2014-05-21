@@ -21,13 +21,23 @@
 </p>
 
 <p>
-  <b>Make model id:</b>
-  <s:property value="device.devicemodel_id" />
+  <b>Make name:</b>
+  <s:property value="device.make_name" />
+</p>
+
+<p>
+  <b>Model name:</b>
+  <s:property value="device.model_name" />
 </p>
 
 <p>
   <b>Dialing number:</b>
   <s:property value="device.dialing_number" />
+</p>
+
+<p>
+  <b>User name:</b>
+  <s:property value="device.username" />
 </p>
 
 <p>

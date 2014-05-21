@@ -37,9 +37,12 @@ public class Device implements Serializable {
 	private Long id;
 	private String equipment_id;
 	private String mac_addr;
-	private User user;
 	private long devicemodel_id;
+	private String make_name;
+	private String model_name;
 	private String dialing_number;
+	private User user;
+	private String username;
 	private Timestamp create_time;
 	public Long getId() {
 		return id;
@@ -59,23 +62,41 @@ public class Device implements Serializable {
 	public void setMac_addr(String mac_addr) {
 		this.mac_addr = mac_addr;
 	}
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
 	public long getDevicemodel_id() {
 		return devicemodel_id;
 	}
 	public void setDevicemodel_id(long devicemodel_id) {
 		this.devicemodel_id = devicemodel_id;
 	}
+	public String getMake_name() {
+		return make_name;
+	}
+	public void setMake_name(String make_name) {
+		this.make_name = make_name;
+	}
+	public String getModel_name() {
+		return model_name;
+	}
+	public void setModel_name(String model_name) {
+		this.model_name = model_name;
+	}
 	public String getDialing_number() {
 		return dialing_number;
 	}
 	public void setDialing_number(String dialing_number) {
 		this.dialing_number = dialing_number;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public Timestamp getCreate_time() {
 		return create_time;
